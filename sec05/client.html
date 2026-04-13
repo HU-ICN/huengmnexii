@@ -13,13 +13,13 @@ const server = ''
 const interval = 5000
 
 // interval 管理用の変数
-var interval_id = null
+let interval_id = null
 
 // 編集中の message id
-var edit_id = null
+let edit_id = null
 
 // 取得したサーバの時刻
-var server_time = null
+let server_time = null
 
 // filter mode (none, important, not_important)
 const filter_mode = {
@@ -27,7 +27,7 @@ const filter_mode = {
     important: 'important',
     not_important: 'not_important',
 }
-var filter = filter_mode.none
+let filter = filter_mode.none
 
 // 時刻フォーマット
 const dateoption = new Intl.DateTimeFormat('ja-JP', {
@@ -78,7 +78,7 @@ async function api_request_delete(url) {
 
 // Message の POST (edit_id がある場合は PUT)
 async function message_post(data) {
-    var url = server + '/messages'
+    let url = server + '/messages'
     if (edit_id === null) {
         return api_request_post(url, data)
     } else {
@@ -89,7 +89,7 @@ async function message_post(data) {
 
 // Message の GET (個別 Message)
 async function message_get(id) {
-    url = server + '/messages/' + id
+    let url = server + '/messages/' + id
     api_request_get(url).then(function(value) {
         display_replace_message(value)
     })
@@ -97,7 +97,7 @@ async function message_get(id) {
 
 // Message の GET (全て)
 async function message_get_all() {
-    var url = server + '/messages'
+    let url = server + '/messages'
     if (server_time !== null) {
         const params = { from_time: server_time }
         const search_params = new URLSearchParams(params)
@@ -110,7 +110,7 @@ async function message_get_all() {
             }
         } else {
             $('#messages ul .message#dummy').remove()
-            for(var i in value['messages']) {
+            for(let i in value['messages']) {
                 display_add_message(value['messages'][i])
             }
         }
@@ -123,7 +123,7 @@ function register_callback(message_id) {
     // DELETEボタンが押された時
     $('button#' + message_id + '.delete').off('click').on(
         'click', function() {
-            url = server + '/messages/' + this.id
+            let url = server + '/messages/' + this.id
             api_request_delete(url)
             $(this).parent().remove()
         }
@@ -132,7 +132,7 @@ function register_callback(message_id) {
     $('button#' + message_id + '.edit').off('click').on(
         'click', function() {
             edit_id = this.id
-            url = server + '/messages/' + edit_id
+            let url = server + '/messages/' + edit_id
             api_request_get(url).then(function(value) {
                 $('#post_message_name').val(value['name'])
                 $('#post_message_message').val(value['message'])
@@ -149,7 +149,7 @@ function register_callback(message_id) {
     // ☆/★ボタンが押された時
     $('button#' + message_id + '.toggle_important').off('click').on(
         'click', function() {
-            url = server + '/messages/' + this.id + '/important'
+            let url = server + '/messages/' + this.id + '/important'
             api_request_get(url).then(function(value) {
                 if (value['important']) { // ★の時
                     return api_request_delete(url)
@@ -165,12 +165,12 @@ function register_callback(message_id) {
 
 // message 表示用の HTML 生成(li の中身)
 function display_item(val) {
-    var i = '☆'
+    let i = '☆'
     if(val['important']) {
         i = '★'
     }
-    var s = dateoption.format(Date.parse(val['time']))
-    var s_update = dateoption.format(Date.parse(val['update_time']))
+    let s = dateoption.format(Date.parse(val['time']))
+    let s_update = dateoption.format(Date.parse(val['update_time']))
     return `${val['id']} ${val['name']}:<br />${val['message']}<br />Time: ${s}<br />Update: ${s_update}<br /><button class='delete' id="${val['id']}">Delete</button><button class="edit" id="${val['id']}">Edit</button><button class="toggle_important" id="${val['id']}">${i}</button>`
 }
 
@@ -217,7 +217,7 @@ $(function () {
         })
     $('button#post_message').on(
         'click', function () {
-            var data = {
+            let data = {
                 name: $('#post_message_name').val().trim(),
                 message: $('#post_message_message').val().trim(),
                 important: $('#post_message_important').prop('checked')

@@ -10,7 +10,7 @@
 const server = ''
 
 // 編集中の message id
-var edit_id = null
+let edit_id = null
 
 // 時刻フォーマット
 const dateoption = new Intl.DateTimeFormat('ja-JP', {
@@ -62,7 +62,7 @@ async function api_request_delete(url) {
 
 // Message の POST (edit_id がある場合は PUT)
 async function message_post(data) {
-    var url = server + '/messages'
+    let url = server + '/messages'
     if (edit_id === null) {
         return api_request_post(url, data)
     } else {
@@ -76,7 +76,7 @@ async function message_post(data) {
 
 // Message の GET (個別 Message)
 async function message_get(id) {
-    url = server + '/messages/' + id
+    let url = server + '/messages/' + id
     api_request_get(url).then(function(value) {
         display_replace_message(value)
     })
@@ -84,14 +84,14 @@ async function message_get(id) {
 
 // Message の GET (全て)
 async function message_get_all() {
-    var url = server + '/messages'
+    let url = server + '/messages'
     api_request_get(url).then(function(value) {
-        var a = Object.keys(value['messages']).reverse()
+        let a = Object.keys(value['messages']).reverse()
         $('#messages ul').empty()
         if (a.length == 0) {
             $('#messages ul').append(`<li class="message">ここにはなにもない</li>`)
         } else {
-            for (var i = 0; i < a.length; i++) {
+            for (let i = 0; i < a.length; i++) {
                 display_add_message(value['messages'][a[i]])
             }
         }
@@ -103,7 +103,7 @@ function register_callback(message_id) {
     // DELETEボタンが押された時
     $('button#' + message_id + '.delete').off('click').on(
         'click', function() {
-            url = server + '/messages/' + this.id
+            let url = server + '/messages/' + this.id
             api_request_delete(url).then(function() {
                 $(this).parent().remove()
             }.bind(this))
@@ -113,7 +113,7 @@ function register_callback(message_id) {
     $('button#' + message_id + '.edit').off('click').on(
         'click', function() {
             edit_id = this.id
-            url = server + '/messages/' + edit_id
+            let url = server + '/messages/' + edit_id
             api_request_get(url).then(function(value) {
                 $('#post_message_name').val(value['name'])
                 $('#post_message_message').val(value['message'])
@@ -125,8 +125,8 @@ function register_callback(message_id) {
     // ☆/★ボタンが押された時
     $('button#' + message_id + '.toggle_important').off('click').on(
         'click', function() {
-            toggle_id = this.id
-            url = server + '/messages/' + toggle_id + '/important'
+            const toggle_id = this.id
+            let url = server + '/messages/' + toggle_id + '/important'
             api_request_get(url).then(function(value) {
                 console.log(value['important'])
                 if (value['important']) { // ★の時
@@ -145,11 +145,11 @@ function register_callback(message_id) {
 
 // message 表示用の HTML 生成(li の中身)
 function display_item(val) {
-    var i = '☆'
+    let i = '☆'
     if(val['important']) {
         i = '★'
     }
-    var s = dateoption.format(Date.parse(val['time']))
+    let s = dateoption.format(Date.parse(val['time']))
     return `${val['id']} ${val['name']}:<br />${val['message']}<br />${s}<br /><button class='delete' id="${val['id']}">Delete</button><button class="edit" id="${val['id']}">Edit</button><button class="toggle_important" id="${val['id']}">${i}</button>`
 }
 
@@ -161,7 +161,7 @@ function display_add_message(val) {
 
 // message を置き換え(li の中身を val で書き換える)
 function display_replace_message(val) {
-    var s = dateoption.format(Date.parse(val['time']))
+    let s = dateoption.format(Date.parse(val['time']))
     $('#messages ul li.message#' + val['id']).empty()
     $('#messages ul li.message#' + val['id']).append(display_item(val))
     register_callback(val['id'])
@@ -175,7 +175,7 @@ $(function () {
         })
     $('button#post_message').on(
         'click', function () {
-            var data = {
+            let data = {
                 name: $('#post_message_name').val().trim(),
                 message: $('#post_message_message').val().trim(),
             }

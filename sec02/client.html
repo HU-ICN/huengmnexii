@@ -33,7 +33,7 @@ $(function () {
     // GET (メッセージ取得)
     $('button#get_message').on(
         'click', function () {
-            url = $('#get_message_url').val()
+            const url = $('#get_message_url').val()
             console.log(url)
             api_request(url).then(function(value) {
                 $('#get_message_result_name').html(value['name'])
@@ -45,9 +45,9 @@ $(function () {
     // POST (メッセージ送信)
     $('button#post_message').on(
         'click', function () {
-            url = $('#post_message_url').val()
+            const url = $('#post_message_url').val()
             console.log(url)
-            data = {
+            const data = {
                 name: $("#post_message_name").val().trim(),
                 message: $("#post_message_message").val().trim()
             }

@@ -38,10 +38,10 @@ $(function () {
     // GET (メッセージ取得)
     $('button#get_message').on(
         'click', function () {
-            url = $('#get_message_url').val()
+            const url = $('#get_message_url').val()
             api_request(url).then(function(value) {
                 if (value['image'] ) {
-                    img = 'data:' + value['image_type'] + ';base64,' + value['image']
+                    const img = 'data:' + value['image_type'] + ';base64,' + value['image']
                     $('#get_message_result_image').attr("src", img)
                 }
                 $('#get_message_result_name').html(value['name'])
@@ -54,17 +54,17 @@ $(function () {
     // POST (メッセージ送信)
     $('button#post_message').on(
         'click', function () {
-            url = $('#post_message_url').val()
-            data = {
+            const url = $('#post_message_url').val()
+            let data = {
                 name: $("#post_message_name").val().trim(),
                 message: $("#post_message_message").val().trim()
             }
             if (data['name'].length == 0 || data['message'].length == 0 || url.length == 0) {
                 return
             }
-            file=$("#post_message_image").prop('files')[0]
+            const file = $("#post_message_image").prop('files')[0]
             if (file) {
-                read = new FileReader();
+                const read = new FileReader();
                 read.readAsBinaryString(file);
                 read.onloadend = function(){
                     data = Object.assign({}, data, {
