@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="166.30557mm"
+   height="68.791664mm"
+   viewBox="0 0 166.30557 68.791664"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   sodipodi:docname="api.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="true"
+     inkscape:zoom="1.1893044"
+     inkscape:cx="232.48884"
+     inkscape:cy="198.43532"
+     inkscape:window-width="1920"
+     inkscape:window-height="1011"
+     inkscape:window-x="0"
+     inkscape:window-y="32"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid182"
+       originx="-8.8194282"
+       originy="-23.812501" />
+  </sodipodi:namedview>
+  <defs
+     id="defs2">
+    <marker
+       style="overflow:visible"
+       id="TriangleStart"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="TriangleStart"
+       markerWidth="5.3244081"
+       markerHeight="6.155385"
+       viewBox="0 0 5.3244081 6.1553851"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.5)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path135" />
+    </marker>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-8.8194287,-23.812501)">
+    <g
+       id="g10470">
+      <text
+         xml:space="preserve"
+         style="font-size:7.05556px;line-height:125%;font-family:Sans;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         x="31.495985"
+         y="82.130196"
+         id="text238"><tspan
+           sodipodi:role="line"
+           id="tspan236"
+           style="text-align:start;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583px"
+           x="31.495985"
+           y="82.130196">APIユーザ</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:7.05556px;line-height:125%;font-family:Sans;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         x="131.65056"
+         y="81.953804"
+         id="text2406"><tspan
+           sodipodi:role="line"
+           id="tspan2404"
+           style="text-align:start;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583px"
+           x="131.65056"
+           y="81.953804">API提供者</tspan></text>
+    </g>
+    <rect
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-miterlimit:1;stroke-opacity:1;paint-order:markers fill stroke"
+       id="rect3912"
+       width="52.916668"
+       height="42.333328"
+       x="21.166662"
+       y="31.75" />
+    <rect
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-miterlimit:1;stroke-opacity:1;paint-order:markers fill stroke"
+       id="rect3961"
+       width="52.916656"
+       height="42.333332"
+       x="121.70834"
+       y="31.75" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:5;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleStart)"
+       d="M 74.083332,42.333333 H 117.73958"
+       id="path4026"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:5;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleStart)"
+       d="M 121.49949,63.5 H 77.843247"
+       id="path4334"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-size:7.05556px;line-height:125%;font-family:Sans;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="115.11281"
+       y="39.32061"
+       id="text5084"><tspan
+         sodipodi:role="line"
+         id="tspan5082"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583px"
+         x="115.11281"
+         y="39.32061">リクエスト</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:7.05556px;line-height:125%;font-family:Sans;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="97.895836"
+       y="58.208332"
+       id="text5826"><tspan
+         sodipodi:role="line"
+         id="tspan5824"
+         style="stroke-width:0.264583px"
+         x="97.895836"
+         y="58.208332" /></text>
+    <text
+       xml:space="preserve"
+       style="font-size:7.05556px;line-height:125%;font-family:Sans;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="115.11634"
+       y="71.366943"
+       id="text7306"><tspan
+         sodipodi:role="line"
+         id="tspan7304"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583px"
+         x="115.11634"
+         y="71.366943">レスポンス</tspan></text>
+    <rect
+       style="fill:#daf3dc;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-miterlimit:1;stroke-opacity:1;paint-order:markers fill stroke"
+       id="rect8808"
+       width="5.2916665"
+       height="42.333336"
+       x="121.70834"
+       y="31.75" />
+    <text
+       xml:space="preserve"
+       style="font-size:7.05556px;line-height:95%;font-family:Sans;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;white-space:pre;inline-size:64.6748;fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="-23.696154"
+       y="55.446083"
+       id="text8812"
+       transform="translate(82.23298,46.097031)" />
+    <text
+       xml:space="preserve"
+       style="font-size:7.05556px;line-height:90%;font-family:Sans;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="97.01387"
+       y="84.736336"
+       id="text10294"><tspan
+         sodipodi:role="line"
+         id="tspan10292"
+         style="text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583px"
+         x="97.01387"
+         y="84.736336">API</tspan><tspan
+         sodipodi:role="line"
+         style="text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583px"
+         x="97.01387"
+         y="91.616386"
+         id="tspan10296">(インタフェース)</tspan></text>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:5;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleStart)"
+       d="M 105.83333,82.020833 121.70833,71.4375"
+       id="path10454"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-size:7.05556px;line-height:125%;font-family:Sans;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#9e9e9e;fill-opacity:1;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="8.1350393"
+       y="29.788561"
+       id="text10484"><tspan
+         sodipodi:role="line"
+         id="tspan10482"
+         style="text-align:start;text-anchor:start;fill:#9e9e9e;fill-opacity:1;stroke:none;stroke-width:0.264583px"
+         x="8.1350393"
+         y="29.788561">HTTP client (ブラウザ等)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:7.05556px;line-height:125%;font-family:Sans;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#9e9e9e;fill-opacity:1;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="127.84314"
+       y="29.612169"
+       id="text10488"><tspan
+         id="tspan10486"
+         style="text-align:start;text-anchor:start;fill:#9e9e9e;fill-opacity:1;stroke:none;stroke-width:0.264583px"
+         x="127.84314"
+         y="29.612169"
+         sodipodi:role="line">HTTP server</tspan></text>
+  </g>
+</svg>
