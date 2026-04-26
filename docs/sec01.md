@@ -306,12 +306,6 @@ git clone https://github.com/HU-ICN/huengmnexii/
 -   `https://github.com/<username>/<username>` をブラウザで開いて確認する．
 
 
-<!--
-
-/usr/share/code/resources/app/node_modules/@vscode/codicons/src/icons/files.svg
-/usr/share/code/resources/app/node_modules/@vscode/codicons/src/icons/git-branch.svg
-
--->
 
 その他，左端のアイコンが縦に並んでいる部分(アクティビティバー; [Activity Bar](https://code.visualstudio.com/api/ux-guidelines/activity-bar))で，
 
