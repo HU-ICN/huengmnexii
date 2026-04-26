@@ -43,6 +43,8 @@ $(function () {
                 if (value['image'] ) {
                     const img = 'data:' + value['image_type'] + ';base64,' + value['image']
                     $('#get_message_result_image').attr("src", img)
+                } else {
+                    $('#get_message_result_image').attr("src", "")
                 }
                 $('#get_message_result_name').html(value['name'])
                 $('#get_message_result_message').html(value['message'])
@@ -93,6 +95,7 @@ $(function () {
         'click', function () {
             $('#post_message_result').empty()
             $('#post_message_message').val('')
+            $('#post_message_image').val('')
         })
 })
 </script>
