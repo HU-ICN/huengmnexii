@@ -612,13 +612,5 @@ JavaScriptでファイル読み込みを書くのに(本ページ作者筒井は
                 }
 ```
 
-<!--
-
-_INPUT3: sec03-patch/main.py.diff
-
--   https://docs.pydantic.dev/latest/concepts/serialization/
--   https://zenn.dev/nowa0402/articles/6b423af53274c2
-
--->
 
 [戻る](./)
