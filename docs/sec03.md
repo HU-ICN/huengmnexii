@@ -25,7 +25,7 @@ title: |-
 
 上記のように以下のファイルを配置し[^tree]，`uvicorn api.main:app`により `api/main.py` で定義したAPIを有するサーバを起動する(仮想環境を有効化することを忘れずに)．
 
-[sec03.zip](sec03.zip)をダウンロードし，`sec03.zip`があるディレクトリにて `unzip sec03.zip` を実行すれば展開される(今いるディレクトリに展開されるので注意すること; 個別にダウンロードしても良い)．
+[sec03.zip](sec03.zip)をダウンロードし，`sec03.zip`があるディレクトリにて `unzip sec03.zip` を実行すれば展開される(今いるディレクトリに展開されるので注意すること; 個別にダウンロードしても良いし GitHub から取り出したものを利用しても良い)．
 
 [^tree]: この図は`tree --charset=ascii --dirsfirst -F`により取得した．ディレクトリの構造をツリー状に表示するコマンドである`tree`については`man tree`参照．
 
@@ -310,6 +310,8 @@ async def get_client():
 
 適当/適切な画像データ(問題となるような画像は用いないこと)を用意してサーバに送ってみる．いくつか画像を [images-sample/](images-sample/) に用意しているのでこれを用いても良い．サーバに送った後に `GET` すると画像が取得・表示される．
 
+なお，<http://127.0.0.1:8000/> ではなく <http://localhost:8000/> を開いている場合，`http://127.0.0.1:8000/message` 宛に GET や POST のリクエストを送ると[CORS違反](sec01.html#cross-origin-resource-sharing-cors)になる(`localhost` の IP アドレスは通常 `127.0.0.1` であるが，`localhost` と `127.0.0.1` は異なるオリジンであるとみなされる)．<http://localhost:8000/> からは `http://localhost:8000/message` 宛に GET や POST のリクエストを送る必要がある．
+
 ### 動作確認3 ###
 
 今回の目的は以下である．
@@ -431,6 +433,41 @@ app = FastAPI(lifespan=lifespan)
 
 また，クライアントはその API をテストするサーバのページ(サーバの IP アドレスを
 `192.168.11.13` とした場合 `http://192.168.11.13:8000/`)か，client.html をダウンロードして開いたものを利用すること．たとえば `http://192.168.11.13:8000/` から `http://192.168.11.14:8000/message` に GET/POST しようとするとエラーが生じる([CORS違反](sec01.html#cross-origin-resource-sharing-cors)になる)．
+
+---
+
+サンプルの `client.html` では `URL:` の input 要素に `127.0.0.1:8000` がハードコーディング(直接記述)されている．あまり親切ではないので，サーバの IP アドレスおよびポート番号で置き換えるようにしたい．これは以下の修正を行うと実現できる．`client.html` に含まれる `127.0.0.1:8000` をサーバの IP アドレスおよびポート番号で置き換えてクライアントに送るようにしている．
+
+(どこのなにを修正するかをよく考えること)
+
+```diff
+--- sec03/api/main.py	2026-04-17 00:11:17.820627930 +0900
++++ sec03-rev/api/main.py	2026-04-26 16:31:18.712157694 +0900
+@@ -2,7 +2,7 @@
+ import json
+ 
+ from contextlib import asynccontextmanager
+-from fastapi import FastAPI
++from fastapi import FastAPI, Request
+ from fastapi.middleware.cors import CORSMiddleware
+ from fastapi.responses import HTMLResponse
+ from pydantic import ValidationError
+@@ -43,11 +43,13 @@
+ 
+ 
+ @app.get("/", response_class=HTMLResponse)
+-async def get_client():
++async def get_client(request: Request):
+     """Return client HTML"""
+     data = ''
+     with open('client.html', 'rt', encoding='utf-8') as f:
+         data = f.read()
++    server_ip, port = request.scope.get("server")
++    data = data.replace("127.0.0.1:8000", f"{server_ip}:{port}")
+     return data
+ 
+ 
+```
 
 ## 追加課題 ##
 
