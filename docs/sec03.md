@@ -376,7 +376,7 @@ async def get_client():
 
 [^Base64]: [RFC 4648, "The Base16, Base32, and Base64 Data Encodings," Oct. 2006](https://datatracker.ietf.org/doc/html/rfc4648).
 
-    バイナリデータ(画像ファイル，音声ファイルなど)には，通常のテキストデータとは異なり，制御文字(NULL文字，改行コード，エスケープ文字など)や非表示文字が含まれる．そのため，バイナリデータをそのまま取り扱うと，通信プロトコルやファイルフォーマットで問題が発生することがある．たとえば，JSONやHTML，HTTPリクエスト/レスポンスなどはテキストデータを想定しており，制御文字が含まれると，データの破損や送受信エラーが発生する可能性がある．また，電子メールにファイルを添付する場合も，メールは本来テキストデータ(7bitの[ASCII文字列](https://ja.wikipedia.org/wiki/ASCII))を送ることを前提としたプロトコル(SMTP)を使用しているため，バイナリファイルを直接送信することはできない．このため，メールの添付ファイルでは[MIME (Multipurpose Internet MailExtensions)](https://ja.wikipedia.org/wiki/Multipurpose_Internet_Mail_Extensions)が使用され，バイナリデータをBase64符号化して文字列にして送受信できるようになっている．
+    バイナリデータ(画像ファイル，音声ファイルなど)には，通常のテキストデータとは異なり，制御文字(NULL文字，改行コード，エスケープ文字など)や非表示文字が含まれる．そのため，バイナリデータをそのまま取り扱うと，通信プロトコルやファイルフォーマットで問題が発生することがある．たとえば，JSONやHTML，HTTPリクエスト/レスポンスなどはテキストデータを想定しており，制御文字が含まれると，データの破損や送受信エラーが発生する可能性がある．また，電子メールにファイルを添付する場合も，メールは本来テキストデータ(7bitの[ASCII文字列](https://ja.wikipedia.org/wiki/ASCII))を送ることを前提としたプロトコル(SMTP)を使用しているため，バイナリファイルを直接送信することはできない．このため，メールの添付ファイルでは[MIME (Multipurpose Internet Mail Extensions)](https://ja.wikipedia.org/wiki/Multipurpose_Internet_Mail_Extensions)が使用され，バイナリデータをBase64符号化して文字列にして送受信できるようになっている．
 
 [^Base64_size]: Base64 は 6 bit を 8 bit の文字に変換する．そのため，データ量は約 4/3 (133%)になる．$2^6=64$ なので Base64 と呼ばれる．文字としては数字(10個)とアルファベット大文字(26個)/小文字(26個)と `-` と `_` が利用される(正規表現で書くと `[0-9a-zA-Z_-]`; 合計64個)．以下，[images-sample/](images-sample/) の画像を Base64 符号化し，バイト数を確認した結果．この程度でプログラムを書くのはあれなので[ワンライナー](https://ja.wikipedia.org/wiki/%E3%82%B7%E3%82%A7%E3%83%AB%E8%8A%B8)(シェルの機能 [`for`](https://www.gnu.org/software/bash/manual/html_node/Looping-Constructs.html#index-for)，[pipe](https://www.gnu.org/software/bash/manual/html_node/Pipelines.html)(`|`) とコマンド([`stat`](https://www.gnu.org/software/coreutils/manual/html_node/stat-invocation.html)，[`base64`](https://www.gnu.org/software/coreutils/manual/html_node/base64-invocation.html)，[`wc`](https://www.gnu.org/software/coreutils/manual/html_node/wc-invocation.html)，[`awk`](https://www.gnu.org/software/gawk/manual/html_node/index.html))を組み合わせて1行でなんとか)している．
 
@@ -404,7 +404,7 @@ async def get_client():
 
     MySQL: MySQLを開発していた企業はサン・マイクロシステムズに買収され，サン・マイクロシステムズ自体もオラクルに吸収合併された．もともとはオープンソースソフトウェアであったが，オラクルによるライセンス形態の変更があり，MySQLからフォークしたMariaDBがオープンソースのコミュニティでは利用されることが多い(MySQLへの依存を継続するオープンソースのプロジェクトも存在する)．
 
-    Oracle: Oracle Database というRDBを開発・販売している(データベースといえばOracle，という時代があった．ただし高価．
+    Oracle: Oracle Database というRDBを開発・販売している．データベースといえばOracle，という時代があった．ただし高価．
 
 ### 解説(`main.py`の挙動) ###
 
