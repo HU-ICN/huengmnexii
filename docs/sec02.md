@@ -14,7 +14,7 @@ title: |-
 
 ### サーバ ###
 
-以下のように`api/main.py`と`api/schemas/message.py`をダウンロードして配置し[^tree]，`uvicorn api.main:app`により以下で定義したAPIを有するサーバを起動する(仮想環境を有効化することを忘れずに)．
+以下のように`api/main.py`と`api/schemas/message.py`をダウンロードして配置し[^tree]，`uvicorn api.main:app`により以下で定義したAPIを有するサーバを起動する(仮想環境を有効化することを忘れずに)．GitHub から取り出したものを利用してもよい．
 
 [^tree]: この図は`tree --charset=ascii --dirsfirst -F`により取得した．ディレクトリの構造をツリー状に表示するコマンドである`tree`については`man tree`参照．
 
