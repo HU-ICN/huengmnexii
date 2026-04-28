@@ -435,7 +435,7 @@ app = FastAPI(lifespan=lifespan)
 大きな画像を送ると `data.json` のサイズが大きくなるので注意すること(ファイルの保存に時間を要するかも知れない)．Base64 符号化により画像データのサイズが大きくなる．
 
 また，クライアントはその API をテストするサーバのページ(サーバの IP アドレスを
-`192.168.11.13` とした場合 `http://192.168.11.13:8000/`)か，client.html をダウンロードして開いたものを利用すること．たとえば `http://192.168.11.13:8000/` から `http://192.168.11.14:8000/message` に GET/POST しようとするとエラーが生じる([CORS違反](sec01.html#cross-origin-resource-sharing-cors)になる)．
+`192.168.11.13` とした場合 `http://192.168.11.13:8000/`)か，client.html をダウンロードして開いたものを利用すること．たとえば `http://192.168.11.14:8000/` から `http://192.168.11.13:8000/message` に GET/POST しようとするとエラーが生じる([CORS違反](sec01.html#cross-origin-resource-sharing-cors)になる)．
 
 ---
 
