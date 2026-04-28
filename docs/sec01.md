@@ -471,8 +471,7 @@ Date:   Sat Apr 11 21:28:38 2026 +0900
     first commit
 ```
 
-ここで，`main` はブランチ，`origin` はリモートと呼ばれる(このあたりから難しくなる)．
-`git push` でリモートレポジトリである `origin` に送る．
+ここで，`main` はブランチ名，`origin` はリモートレポジトリに付けられたローカル側での名前である(このあたりから難しくなる)．`git push` により，ローカルの `main` ブランチの内容を，リモート(`origin`)上の `main` ブランチに反映する．
 
 ```console
 $ git push
@@ -624,7 +623,7 @@ To https://github.com/htsutsui/htsutsui
  * [new branch]      main -> main-tsutsui-fix
 ```
 
-remote からの message にあるように，これで pull request を上記 URL にアクセスして作成することができる．
+remote からのメッセージにあるように，これで pull request を上記 URL にアクセスして作成することができる．
 
 通常は `main` に直接送られると皆が混乱するので，pull request を作成して他のユーザに review してもらってからその変更を `main` に取り込む．
 
@@ -634,31 +633,32 @@ remote からの message にあるように，これで pull request を上記 U
 
 -   `git clone`: レポジトリを clone する
 -   `git add <file>`: ファイルをステージする
--   `git reset <file>`: Staging を取り消す
+-   `git restore --staged <file>`: Staging を取り消す
+    -   `git reset <file>`: Staging を取り消す(古くから使われているやり方; `git restore` の導入は2019年8月の Git 2.23 より)
 -   `git commit -m "Comment"`: Commit する(`-m "Comment"` がなければ nano か vi が起動する; 設定できる)．
 -   `git log`: log を確認する(`--stat` や `-p` や `--graph` の option がよく用いられる)．
--   `git diff`: 最新の commit からの差分を表示する(引数で様々な差分表示が可能)．
+-   `git diff`: Working Tree の未ステージの変更(差分)を表示する(引数で様々な差分表示が可能)．
 -   `git status`: 手元のレポジトリの状態の確認(`-s` で simple な表示になる)
--   `git remote`: remote の操作．`origin` の他の remote を追加するなども可能．
--   `git branch`: branch の操作．新たな branch を作成したりなど．
+-   `git remote`: remote の操作．`origin` 以外の remote を追加するなども可能．
+-   `git branch`: branch の操作．新たな branch を作成するなど．
 -   `git switch`: branch の切り替え
--   `git fetch`: remote の情報の fetch
+-   `git fetch`: remote の更新情報を取得する(Working Tree は更新されない)
 -   `git init`: 初期化
--   `git merge`: branch の merge (取り込み)
--   `git rebase`: 現在の branch を，指定した branch に繋ぐ(rebase)
--   `git reset`: branch を特定の commit の位置に reset する
-    -   `--hard`: ファイルが更新される
-    -   `--mixed`: ファイルは更新されない(default)
+-   `git merge`: 他の branch の変更を現在の branch に取り込む
+-   `git rebase`: 現在の branch の変更を，指定した branch の先につなぎ直す
+-   `git reset`: branch の位置や staging 状態を特定の commit に reset する
+    -   `--hard`: Working Tree のファイルも更新される
+    -   `--mixed`: Working Tree のファイルは更新されない(default)
 
 他に以下(上記だけでも多いが．．．)．
 
--   `git revert`: commit を revert する(逆方向に commit を適用)
--   `git cherry-pick`: 指定した commit を適用する
+-   `git revert`: commit を revert する(逆方向の変更を新たな commit として適用)
+-   `git cherry-pick`: 指定した commit を現在の branch に適用する
 
 いくつか重要なものを忘れているような気がするが，commit，つまり変更内容の記録さえ行えていれば様々にその変更(commit)を操作することができる．なお，以下注意．
 
 -   ファイル名を変更すると変更が追いにくくなるので注意(`git mv` などのコマンドもあるが)．
--   ソースファイルのバージョン管理を目的としているので，可能な限りバイナリファイル(画像など)や大きなファイルは `push` しない(`clone`)．また通常中間生成物(Cプログラムをコンパイルしてできた object file(`.o`)など)もレポジトリに入れない．
+-   ソースファイルのバージョン管理を目的としているので，可能な限りバイナリファイル(画像など)や大きなファイルはレポジトリに入れない．また通常，中間生成物(Cプログラムをコンパイルしてできた object file(`.o`)など)もレポジトリに入れない．
 -   パスワードなどが含まれないように注意する．修正して `push` したとしても履歴として残る．
 
 ## 解説 ##
