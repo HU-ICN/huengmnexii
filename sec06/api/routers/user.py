@@ -5,16 +5,17 @@ from datetime import datetime, timedelta, timezone
 
 from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
+from sqlmodel import Session
 
 import jwt
 from jwt.exceptions import InvalidTokenError
 
 from pwdlib import PasswordHash
 
-from api.schemas.system import System
 from api.schemas.user import User, UserInDB, UserCreate
 from api.schemas.token import Token, TokenData
-from api.db import get_system
+from api.db import get_session
+from api.models import UserModel
 
 SECRET_KEY = "410f0f0770a1a93c9d3010b6276490d757f0351ec6365fa4f4660a5006b7d269"
 ALGORITHM = "HS256"
@@ -36,14 +37,15 @@ def get_password_hash(password):
     return password_hash.hash(password)
 
 
-def get_user(db, username: str):
-    if username in db:
-        return db[username]
-    return None
+def get_user(session: Session, username: str):
+    user = session.get(UserModel, username)
+    if user is None:
+        return None
+    return UserInDB(username=user.username, hashed_password=user.hashed_password)
 
 
-def authenticate_user(fake_db, username: str, password: str):
-    user = get_user(fake_db, username)
+def authenticate_user(session: Session, username: str, password: str):
+    user = get_user(session, username)
     if not user:
         verify_password(password, DUMMY_HASH)
         return False
@@ -65,7 +67,7 @@ def create_access_token(data: dict, expires_delta: timedelta | None = None):
 
 async def get_current_user(
         token: str = Depends(oauth2_scheme),
-        system: System = Depends(get_system)):
+    session: Session = Depends(get_session)):
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail="Could not validate credentials",
@@ -79,7 +81,7 @@ async def get_current_user(
         token_data = TokenData(username=username)
     except InvalidTokenError:
         raise credentials_exception
-    user = get_user(system.users_db, username=token_data.username)
+    user = get_user(session, username=token_data.username)
     if user is None:
         raise credentials_exception
     return user
@@ -92,9 +94,9 @@ async def get_current_active_user(current_user: User = Depends(get_current_user)
 @router.post("/token")
 async def login_for_access_token(
     form_data: OAuth2PasswordRequestForm = Depends(),
-    system: System = Depends(get_system)
+    session: Session = Depends(get_session)
 ) -> Token:
-    user = authenticate_user(system.users_db,
+    user = authenticate_user(session,
                              form_data.username, form_data.password)
     if not user:
         raise HTTPException(
@@ -110,20 +112,21 @@ async def login_for_access_token(
 
 
 @router.post("/users")
-async def create_user(user: UserCreate, system: System = Depends(get_system)):
+async def create_user(user: UserCreate, session: Session = Depends(get_session)):
     username = user.username.strip()
     password = user.password.strip()
 
-    if username in system.users_db:
+    if session.get(UserModel, username) is not None:
         return "Already exists"
     if len(password) == 0:
         return "Empty password"
     if len(username) == 0:
         return "Empty username"
 
-    system.users_db[username] = UserInDB(
+    session.add(UserModel(
         username=username,
-        hashed_password=password_hash.hash(password))
+        hashed_password=password_hash.hash(password)))
+    session.commit()
     return "Success"
 
 

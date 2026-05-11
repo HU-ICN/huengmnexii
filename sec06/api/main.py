@@ -1,36 +1,15 @@
-import json
-
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse, FileResponse
-from pydantic import ValidationError
-
-from api.schemas.system import System
 from api.routers import message, user
-
-
-def load(app):
-    try:
-        with open("data.json", "rt", encoding="utf-8") as f:
-            data_dict = json.load(f)
-            app.state.system = System.model_validate(data_dict)
-    except (FileNotFoundError, ValidationError):
-        # ファイルが存在しない or ファイルがうまく読めない
-        # →Default の System を作成する
-        app.state.system = System()
-
-
-async def save(app):
-    with open("data.json", "wt", encoding="utf-8") as f:
-        f.write(app.state.system.model_dump_json(indent=4))
+from api.db import create_db_and_tables
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    load(app)
+    create_db_and_tables()
     yield
-    await save(app)
 
 
 app = FastAPI(lifespan=lifespan)

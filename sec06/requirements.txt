@@ -3,4 +3,6 @@ uvicorn
 pyjwt
 pwdlib[argon2]
 python-multipart
+sqlmodel
+psycopg2-binary
 
