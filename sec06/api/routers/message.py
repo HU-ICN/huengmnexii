@@ -47,6 +47,7 @@ async def get_messages(session: Session = Depends(get_session),
     messages = list(session.exec(query).all())
     ids = [m.id for m in messages if m.id is not None]
 
+    # ID のリストのみ返す
     if ids_only:
         return Response(
             current_id=get_current_id(session),
@@ -91,6 +92,7 @@ async def get_message(message_id: int,
                       current_user: User = Depends(get_current_active_user)):
     """個別 message のGET"""
     m = session.get(Message, message_id)
+    # 該当 ID の message が存在しない場合は 404 を返す(他の関数でも同様)
     if m is None:
         raise HTTPException(status_code=404,
                             detail="Message cannot be found")
