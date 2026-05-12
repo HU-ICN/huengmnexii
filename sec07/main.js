@@ -40,17 +40,12 @@ $(function () {
         interval_id = setInterval(message_get_all, interval)
         get_username().then(value => {
             console.log(value['username'])
-            $('#post_message_name').append(' ' + value['username'])
+            $('#post_message_name_display').append(' ' + value['username'])
         })
     } else {
         $('#login').show()
     }
-    console.log(token)
-    $('button#get_message').on(
-        'click', function () {
-            message_get_all()
-        })
-    $('button#login').on(
+    $('button#login_button').on(
         'click', function () {
             $('#login_message').empty()
             let username = $('#login_username').val().trim()
@@ -61,7 +56,7 @@ $(function () {
                 $('#login_message').append('Login Error')
             })
         })
-    $('button#sign_up').on(
+    $('button#sign_up_button').on(
         'click', function () {
             $('#login_message').empty()
             let username = $('#login_username').val().trim()
@@ -85,7 +80,7 @@ $(function () {
                 $('#login_message').append('Sign Up Error')
             })
         })
-    $('button#logout').on(
+    $('button#logout_button').on(
         'click', function () {
             logout()
         })
