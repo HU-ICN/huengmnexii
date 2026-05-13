@@ -590,7 +590,7 @@ async def get_client():
 
 とはいえ1つずつファイル(とURLの対応)を定義するのは大変なのでFastAPIには [`mount`](https://fastapi.tiangolo.com/ja/tutorial/static-files/) と呼ばれる機能が存在する．たとえば以下のように使う[^html_option]．
 
-[^html_option]: `html=True` は `example/` にアクセスされた際に `example/index.html` が存在すれがそれを返すオプション．
+[^html_option]: `html=True` は `example/` にアクセスされた際に `example/index.html` が存在すればそれを返すオプション．
 
 [`api/main.py`](../sec03-mount/api/main.py)
 
