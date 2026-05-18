@@ -1,0 +1,13 @@
+{
+    "current_id": 1,
+    "messages": {
+        "1": {
+            "name": "A",
+            "message": "b",
+            "important": false,
+            "id": 1,
+            "time": "2026-05-18T08:55:05.746219",
+            "update_time": "2026-05-18T08:55:05.746219"
+        }
+    }
+}
